@@ -1470,4 +1470,15 @@ client.on("message", message => {
     message.channel.send(embed);
   }
 })
-  
+  client.on("message", message => {
+  if (message.content.startsWith(prefix + "sbot")) {
+    var embed = new Discord.MessageEmbed()
+    .setFooter(`SECURITY BOT`)
+    .setColor("RANDOM")
+    .addField('``Servers``', ` [${client.guilds.size}]`, true)
+    .addField('``Users``' ,` [${client.users.size}] ` , true)
+    message.channel.send(embed)
+  }
+  })
+////by black jack
+    
