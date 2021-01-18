@@ -1,4 +1,3 @@
-
 const { Client, MessageEmbed } = require("discord.js");
 var { Util } = require("discord.js");
 const client = new Client({ disableEveryone: true });
@@ -20,8 +19,8 @@ const dateFormat = require("dateformat");
 var table = require("table").table;
 const Discord = require("discord.js");
 const cmd = require("node-cmd");
-const prefix = "%";
-client.login("");
+const prefix = "s!";
+client.login("ODAwMzY5NjE4ODA3NTU0MDg4.YARISw.-WT63rqz7jSgQiXgKTEeiKBhv3s");
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.username}!`);
   client.user.setStatus("idle");
@@ -141,7 +140,7 @@ client.on("message", async message => {
 ━──╮•╭──━
 
 __ [Vote](link top gg) __  
-__ [invite](invitebot) __  __ [Support](https://discord.gg/cetGQvWD3h) __
+__ [invite](invitebot) __  __ [Support](https://discord.com/api/oauth2/authorize?client_id=800369618807554088&permissions=8&scope=bot) __
 
 `);
     message.channel.send(help);
@@ -1377,23 +1376,23 @@ client.on("message", professor => {
   }
 });
 
-client.on("message", professor => {
-  if (professor.content.startsWith(prefix + "anti bot off")) {
-    if (!professor.channel.guild) return;
-    if (!professor.member.hasPermission("OWNERSHIP")) return;
-    antibots[professor.guild.id] = {
+client.on("message", unknown => {
+  if (unknown.content.startsWith(prefix + "anti bot off")) {
+    if (!unknown.channel.guild) return;
+    if (!unknown.member.hasPermission("OWNERSHIP")) return;
+    antibots[unknown.guild.id] = {
       onoff: "Off"
     };
     var profe = new Discord.MessageEmbed()
-      .setAuthor(professor.guild.name)
+      .setAuthor(unknown.guild.name)
       .setColor("#0000")
       .setTitle("AntiBot Off")
       .setDescription(
-        `The AntiBots Join Is Off  | By <@${professor.author.id}>`
+        `The AntiBots Join Is Off  | By <@${unknown.author.id}>`
       )
       .setTimestamp();
-    professor.channel.send(profe).then(p => {
-      professor.react("❎");
+    unknown.channel.send(profe).then(p => {
+      unknown.react("❎");
     });
     fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
       if (err)
