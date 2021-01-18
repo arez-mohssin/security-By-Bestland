@@ -20,11 +20,11 @@ var table = require("table").table;
 const Discord = require("discord.js");
 const cmd = require("node-cmd");
 const prefix = "s!";
-client.login("ODAwMzY5NjE4ODA3NTU0MDg4.YARISw.-WT63rqz7jSgQiXgKTEeiKBhv3s");
+client.login(process.env.);
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.username}!`);
   client.user.setStatus("idle");
-  client.user.setActivity(`${prefix}help`, { type: "PLAYING" });
+  client.user.setActivity(`${prefix}help |SECURITY IS HERE SERVERS ${client.guilds.size}`, { type: "PLAYING" });
   client.guilds.cache.forEach(g => {
     if (g.member(client.user).hasPermission("ADMINISTRATOR")) {
       g.fetchInvites().then(guildInvites => {});
@@ -1473,10 +1473,10 @@ client.on("message", message => {
   client.on("message", message => {
   if (message.content.startsWith(prefix + "sbot")) {
     var embed = new Discord.MessageEmbed()
+    .addField('``Servers``',  `${client.guilds.size}`, true)
+    .addField('``Users``' ,`${client.users.size}` , true)
     .setFooter(`SECURITY BOT`)
     .setColor("RANDOM")
-    .addField('``Servers``', ` [${client.guilds.size}]`, true)
-    .addField('``Users``' ,` [${client.users.size}] ` , true)
     message.channel.send(embed)
   }
   })
