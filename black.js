@@ -20,7 +20,7 @@ var table = require("table").table;
 const Discord = require("discord.js");
 const cmd = require("node-cmd");
 const prefix = "s!";
-client.login(process.env.);
+client.login(process.env.TOKEN);
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.username}!`);
   client.user.setStatus("idle");
@@ -174,7 +174,7 @@ client.on("message", message => {
       time: 30
     };
   if (message.content.startsWith(prefix + "anti")) {
-    if (message.author.id !== message.guild.owner.user.id){
+    if (!message.member.hasPermission("OWNERSHIP")) return;
       let embeeed = new Discord.MessageEmbed()
       .setTitle("Protection+")
       .setDescription("**JUST FOR ONWER SHIP**")
@@ -274,7 +274,7 @@ client.on("message", message => {
     if (e) throw e;
   });
     }}
-});
+);
 client.on("channelDelete", async channel => {
   const entry1 = await channel.guild
     .fetchAuditLogs({
